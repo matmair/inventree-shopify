@@ -6,7 +6,7 @@ from django import forms
 from django.urls import re_path
 from django.http.response import Http404
 from django.shortcuts import redirect, render
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from stock.models import StockItem
 
