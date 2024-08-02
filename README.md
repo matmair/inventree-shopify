@@ -9,6 +9,8 @@ Sync changes between Shopify inventory levels (nventory per location) and InvenT
 ## Installation
 
 1. Install in your instance via [pip install method](https://docs.inventree.org/en/latest/extend/plugins/install/?h=plugin#plugin-installation-file-pip).
+  - Add "inventree-shopify" to plugins.txt
+  - Run "invoke update" from inventree-server. See (https://docs.inventree.org/en/latest/start/docker_install/#update-database)
 2. Add a private app to your Shopify store.
   - Use the scopes: "write_inventory, read_inventory, write_product_listings, read_product_listings, write_products, read_products"
 3. Go to the inventree-shopify settings in InvenTree and fill in the settings for the plugin from your new private app.
