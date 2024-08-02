@@ -3,7 +3,7 @@
 import datetime
 
 from django import forms
-from django.conf.urls import url
+from django.urls import re_path
 from django.http.response import Http404
 from django.shortcuts import redirect, render
 from django.utils.translation import ugettext_lazy as _
@@ -285,13 +285,13 @@ class ShopifyPlugin(
     def setup_urls(self):
         """Returns the URLs defined by this plugin."""
         return [
-            url(
+            re_path(
                 r"increase/(?P<location>\d+)/(?P<pk>\d+)/",
                 self.view_increase,
                 name="increase-level",
             ),
-            url(r"webhook/", self.view_webhooks, name="webhooks"),
-            url(r"^", self.view_index, name="index"),
+            re_path(r"webhook/", self.view_webhooks, name="webhooks"),
+            re_path(r"^", self.view_index, name="index"),
         ]
 
     SETTINGS = {
