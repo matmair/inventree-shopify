@@ -13,7 +13,7 @@ from .ShopifyPlugin import ShopifyPlugin
 class Product(models.Model):
     """A shopify product reference."""
 
-    id = models.IntegerField(primary_key=True, verbose_name=_("Id"))  # noqa: A003
+    id = models.BigIntegerField(primary_key=True, verbose_name=_("Id"))  # noqa: A003
     title = models.CharField(max_length=250, verbose_name=_("Title"))
     body_html = models.CharField(max_length=250, verbose_name=_("Body HTML"))
     vendor = models.CharField(max_length=250, verbose_name=_("Vendor"))
@@ -37,7 +37,7 @@ class Product(models.Model):
 class Variant(models.Model):
     """A shopify product variant reference."""
 
-    inventory_item_id = models.IntegerField(
+    inventory_item_id = models.BigIntegerField(
         verbose_name=_("Inventory item ID"), unique=True
     )
     title = models.CharField(max_length=250, verbose_name=_("Title"))
@@ -74,7 +74,7 @@ class InventoryLevel(models.Model):
     """A shopify inventory level reference."""
 
     available = models.IntegerField(verbose_name=_("Available"))
-    location_id = models.IntegerField(verbose_name=_("Location ID"))
+    location_id = models.BigIntegerField(verbose_name=_("Location ID"))
     updated_at = models.DateField(
         blank=True, null=True, verbose_name=_("Creation Date")
     )
@@ -114,7 +114,7 @@ class ShopifyWebhook(WebhookEndpoint):
     TOKEN_NAME = "X-Shopify-Hmac-Sha256"  # noqa: S105
     VERIFICATION_METHOD = VerificationMethod.HMAC
 
-    shopify_webhook_id = models.IntegerField(blank=True, null=True)
+    shopify_webhook_id = models.BigIntegerField(blank=True, null=True)
 
     def init(self, request, *args, **kwargs):
         """Setup for webhook handler."""

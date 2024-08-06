@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Product',
             fields=[
-                ('id', models.IntegerField(primary_key=True, serialize=False, verbose_name='Id')),
+                ('id', models.BigIntegerField(primary_key=True, serialize=False, verbose_name='Id')),
                 ('title', models.CharField(max_length=250, verbose_name='Title')),
                 ('body_html', models.CharField(max_length=250, verbose_name='Body HTML')),
                 ('vendor', models.CharField(max_length=250, verbose_name='Vendor')),
@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
             name='ShopifyWebhook',
             fields=[
                 ('webhookendpoint_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='common.webhookendpoint')),
-                ('shopify_webhook_id', models.IntegerField(blank=True, null=True)),
+                ('shopify_webhook_id', models.BigIntegerField(blank=True, null=True)),
             ],
             bases=('common.webhookendpoint',),
         ),
@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
             name='Variant',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('inventory_item_id', models.IntegerField(unique=True, verbose_name='Inventory item ID')),
+                ('inventory_item_id', models.BigIntegerField(unique=True, verbose_name='Inventory item ID')),
                 ('title', models.CharField(max_length=250, verbose_name='Title')),
                 ('sku', models.CharField(max_length=250, verbose_name='SKU')),
                 ('barcode', models.CharField(max_length=250, verbose_name='Barcode')),
@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('available', models.IntegerField(verbose_name='Available')),
-                ('location_id', models.IntegerField(verbose_name='Location ID')),
+                ('location_id', models.BigIntegerField(verbose_name='Location ID')),
                 ('updated_at', models.DateField(blank=True, null=True, verbose_name='Creation Date')),
                 ('stock_item', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ShopifyInventoryLevel', to='stock.stockitem', verbose_name='StockItem')),
                 ('variant', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='levels', to='inventree_shopify.variant', verbose_name='Variant')),
