@@ -114,7 +114,7 @@ class ShopifyWebhook(WebhookEndpoint):
     TOKEN_NAME = "X-Shopify-Hmac-Sha256"  # noqa: S105
     VERIFICATION_METHOD = VerificationMethod.HMAC
 
-    shopify_webhook_id = models.IntegerField(blank=True, null=True)
+    shopify_webhook_id = models.BigIntegerField(blank=True, null=True)
 
     def init(self, request, *args, **kwargs):
         """Setup for webhook handler."""
